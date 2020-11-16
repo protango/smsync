@@ -1,5 +1,5 @@
 ﻿param (
-    [string]$TryBranch = "working"
+    [string]$TryBranch = "master"
 )
 
 function Take-Input {
