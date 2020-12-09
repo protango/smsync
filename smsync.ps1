@@ -43,7 +43,7 @@ function Clean-Working-Tree {
         $folderName = Split-path -Leaf $(Get-Location).Path
         echo " "
         git status
-        $response = Take-Input "Working tree for `"$folderName`" is unclean, (D)iscard changes, (S)tash, (C)ommit, or (I)gnore"
+        $response = Take-Input "Working tree for `"$folderName`" is unclean, (D)iscard changes, (S)tash, (C)ommit, C(u)stom, or (I)gnore"
         if ($response -eq "D") {
             git reset head --hard
         } elseif ($response -eq "S") {
@@ -52,8 +52,17 @@ function Clean-Working-Tree {
             $commitMsg = Take-Input "Commit message"
             git add .
             git commit -m $commitMsg
+        } elseif ($response -eq "u") {
+            Begin-Custom-Mode
         }
     }
+}
+
+function Begin-Custom-Mode {
+    Write-Host -ForegroundColor "yellow" -NoNewline "Entering custom resolution mode. Run `""
+    Write-Host -ForegroundColor "red" -NoNewline "exit"
+    Write-Host -ForegroundColor "yellow" -NoNewline "`" to return."
+    powershell -NoLogo
 }
 
 
