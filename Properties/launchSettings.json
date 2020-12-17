@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "smsync": {
+      "commandName": "Project",
+      "commandLineArgs": "-p \"C:\\Users\\Zac\\source\\repos\\Staffing\\TTS_Application_Core\""
+    }
+  }
+}
